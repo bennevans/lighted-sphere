@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintStream;
 
 /**
@@ -18,7 +20,7 @@ import java.io.PrintStream;
 public class MainSphere {
 
 	
-	public static void main(String args[]) throws FileNotFoundException{	
+	public static void main(String args[]) throws IOException{	
 		
 		
 		String filename = "sphere.plot";
@@ -53,7 +55,7 @@ public class MainSphere {
 		Space space = new Space(w, observer, light, s);
 		
 		File f = new File(filename);
-		PrintStream ps = new PrintStream(f);
+		FileWriter fw = new FileWriter(f);
 		
 		double[][] pixels = new double[xpixels][ypixels];
 		
@@ -70,6 +72,8 @@ public class MainSphere {
 		
 		System.out.printf("done!\nWriting %d pixels to %s...", xpixels*ypixels, filename);
 		
+		long startTime = System.currentTimeMillis();
+		
 		for(int i = 0; i < ypixels; i++){
 			for(int j = 0; j < xpixels; j++){
 				
@@ -82,12 +86,12 @@ public class MainSphere {
 					gl = backgroundG;
 					bl = backgroundB;
 				}
-					
-				ps.printf("%d %d %d %d %d\n", j,i, rl, gl, bl);
+				//fw.write(String.format("%d %d %d %d %d\n", j,i, rl, gl, bl));
+				fw.write(j+" "+i+" "+rl+" "+gl+" "+bl+"\n");
 			}
 		}
-		System.out.println("done!");
-		ps.close();
+		fw.close();
+		System.out.println("done in " + (System.currentTimeMillis()-startTime)/1000. + " seconds!");
 	}
 	
 }
