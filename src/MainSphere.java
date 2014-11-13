@@ -26,7 +26,7 @@ public class MainSphere {
 		double sphereY = 0;
 		double sphereZ = 4;
 		double sphereRadius = 2;
-		int xpixels = 500, ypixels = 500;
+		int xpixels = 1920, ypixels = 1080;
 		int xViewMin = 0;
 		int xViewMax = 7;
 		int yViewMin = 0;
@@ -40,7 +40,11 @@ public class MainSphere {
 		
 		int r = 255;
 		int g = 0;
-		int b = 255;
+		int b = 0;
+		
+		int backgroundR = 0;
+		int backgroundG = 255;
+		int backgroundB = 0;
 		
 		Sphere s = new Sphere(new Point(sphereX, sphereY, sphereZ), sphereRadius);
 		Window w = new Window(xViewMin, xViewMax, yViewMin, yViewMax, xpixels, ypixels);
@@ -51,11 +55,35 @@ public class MainSphere {
 		File f = new File(filename);
 		PrintStream ps = new PrintStream(f);
 		
-		System.out.print("Writing to " + filename + "... ");
+		double[][] pixels = new double[xpixels][ypixels];
 		
-		for(int i = 0; i <= ypixels; i++){
-			for(int j = 0; j <= xpixels; j++){
-				ps.printf("%d %d %d %d %d\n", j,i, (int)(space.calculateIntensity(j, i)*r),(int)(space.calculateIntensity(j, i)*g),(int)(space.calculateIntensity(j, i)*b));
+		System.out.printf("Generating sphere:\n\tSphere: %s\n\tObserver: %s\n\tLight: %s\n\tWindow: %s\n",s,observer,light,w);
+		
+		
+		System.out.print("Calculating points... ");
+		
+		for(int i = 0; i < ypixels; i++){
+			for(int j = 0; j < xpixels; j++){
+				pixels[j][i] = space.calculateIntensity(j, i);
+			}
+		}
+		
+		System.out.printf("done!\nWriting %d pixels to %s...", xpixels*ypixels, filename);
+		
+		for(int i = 0; i < ypixels; i++){
+			for(int j = 0; j < xpixels; j++){
+				
+				int rl = (int)(pixels[j][i]*r);
+				int gl = (int)(pixels[j][i]*r);
+				int bl = (int)(pixels[j][i]*r);
+				
+				if(pixels[j][i] == -1){
+					rl = backgroundR;
+					gl = backgroundG;
+					bl = backgroundB;
+				}
+					
+				ps.printf("%d %d %d %d %d\n", j,i, rl, gl, bl);
 			}
 		}
 		System.out.println("done!");

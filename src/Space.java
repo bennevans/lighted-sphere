@@ -20,7 +20,7 @@ public class Space {
 	
 	public double calculateIntensity(int xPixel, int yPixel){
 		if(!collidesWithSphere(xPixel, yPixel))
-			return 0.0;
+			return -1.0;
 		
 		
 		Vector towardsSphere = new Vector(observer, window.getPointFromPixel(xPixel, yPixel));
