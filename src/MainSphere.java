@@ -25,17 +25,17 @@ public class MainSphere {
 		
 		String filename = "sphere.plot";
 		double sphereX = 2.5;
-		double sphereY = 0;
-		double sphereZ = 4;
+		double sphereY = -1;
+		double sphereZ = 3;
 		double sphereRadius = 2;
 		int xpixels = 1920, ypixels = 1080;
 		int xViewMin = 0;
 		int xViewMax = 7;
 		int yViewMin = 0;
 		int yViewMax = 7;
-		double lightX = -2;
-		double lightY = 6;
-		double lightZ = 7;
+		double lightX = 50;
+		double lightY = 1;
+		double lightZ = 3;
 		double observerX = 3.6;
 		double observerY = 5;
 		double observerZ = -2.7;
@@ -91,7 +91,7 @@ public class MainSphere {
 			}
 		}
 		fw.close();
-		System.out.println("done in " + (System.currentTimeMillis()-startTime)/1000. + " seconds!");
+		System.out.println(" done in " + (System.currentTimeMillis()-startTime)/1000. + " seconds!");
 	}
 	
 }
