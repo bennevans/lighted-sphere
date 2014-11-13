@@ -25,28 +25,30 @@ public class MainSphere {
 		
 		String filename = "sphere.plot";
 		double sphereX = 2.5;
-		double sphereY = -1;
-		double sphereZ = 3;
+		double sphereY = 1;
+		double sphereZ = 4;
 		double sphereRadius = 2;
 		int xpixels = 1920, ypixels = 1080;
 		int xViewMin = 0;
-		int xViewMax = 7;
-		int yViewMin = 0;
-		int yViewMax = 7;
-		double lightX = 50;
-		double lightY = 1;
-		double lightZ = 3;
-		double observerX = 3.6;
-		double observerY = 5;
-		double observerZ = -2.7;
+		int xViewMax = 5;
+		int yViewMin = -5;
+		int yViewMax = 10;
+		double lightX = 2.5;
+		double lightY = 60;
+		double lightZ = 4;
+		double observerX = 2.5;
+		double observerY = 1;
+		double observerZ = -1;
+		
+		double lightIntensity = 0.5;
 		
 		int r = 255;
 		int g = 0;
-		int b = 0;
+		int b = 150;
 		
-		int backgroundR = 255;
-		int backgroundG = 255;
-		int backgroundB = 255;
+		int backgroundR = 0;
+		int backgroundG = 0;
+		int backgroundB = 150;
 		
 		Sphere s = new Sphere(new Point(sphereX, sphereY, sphereZ), sphereRadius);
 		Window w = new Window(xViewMin, xViewMax, yViewMin, yViewMax, xpixels, ypixels);
@@ -77,9 +79,9 @@ public class MainSphere {
 		for(int i = 0; i < ypixels; i++){
 			for(int j = 0; j < xpixels; j++){
 				
-				int rl = (int)(pixels[j][i]*r);
-				int gl = (int)(pixels[j][i]*g);
-				int bl = (int)(pixels[j][i]*b);
+				int rl = (int)(pixels[j][i]*r*lightIntensity);
+				int gl = (int)(pixels[j][i]*g*lightIntensity);
+				int bl = (int)(pixels[j][i]*b*lightIntensity);
 				
 				if(pixels[j][i] == -1){
 					rl = backgroundR;
