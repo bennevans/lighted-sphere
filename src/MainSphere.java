@@ -44,9 +44,9 @@ public class MainSphere {
 		int g = 0;
 		int b = 0;
 		
-		int backgroundR = 0;
+		int backgroundR = 255;
 		int backgroundG = 255;
-		int backgroundB = 0;
+		int backgroundB = 255;
 		
 		Sphere s = new Sphere(new Point(sphereX, sphereY, sphereZ), sphereRadius);
 		Window w = new Window(xViewMin, xViewMax, yViewMin, yViewMax, xpixels, ypixels);
@@ -78,8 +78,8 @@ public class MainSphere {
 			for(int j = 0; j < xpixels; j++){
 				
 				int rl = (int)(pixels[j][i]*r);
-				int gl = (int)(pixels[j][i]*r);
-				int bl = (int)(pixels[j][i]*r);
+				int gl = (int)(pixels[j][i]*g);
+				int bl = (int)(pixels[j][i]*b);
 				
 				if(pixels[j][i] == -1){
 					rl = backgroundR;
