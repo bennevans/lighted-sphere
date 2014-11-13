@@ -10,7 +10,7 @@ import java.io.PrintStream;
  * window size, light source location, and sphere center and radius.
  * 
  * Outputs a file plottable with the following gnuplot command:
- * plot "sphere.txt" with rgbimage
+ * plot "sphere.plot" with rgbimage
  *
  *
  */
@@ -21,7 +21,7 @@ public class MainSphere {
 	public static void main(String args[]) throws FileNotFoundException{	
 		
 		
-		String filename = "sphere.txt";
+		String filename = "sphere.plot";
 		double sphereX = 2.5;
 		double sphereY = 0;
 		double sphereZ = 4;
