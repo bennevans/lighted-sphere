@@ -25,7 +25,7 @@ public class Space {
 		
 		Vector towardsSphere = new Vector(observer, window.getPointFromPixel(xPixel, yPixel));
 		Point collisionPoint = sphere.intersection(towardsSphere);
-		return 1-sphere.unitNormalVector(collisionPoint).cosAngle(new Vector(light, collisionPoint));
+		return sphere.unitNormalVector(collisionPoint).cosAngle(new Vector(light, collisionPoint));
 	}
 		
 }

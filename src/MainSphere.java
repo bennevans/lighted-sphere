@@ -23,32 +23,32 @@ public class MainSphere {
 	public static void main(String args[]) throws IOException{	
 		
 		
-		String filename = "sphere.plot";
-		double sphereX = 2.5;
-		double sphereY = 1;
-		double sphereZ = 4;
-		double sphereRadius = 2;
-		int xpixels = 1920, ypixels = 1080;
+		String filename = "image.txt";
+		double sphereX = 15;
+		double sphereY = 15;
+		double sphereZ = 5000;
+		double sphereRadius = 4900;
+		int xpixels = 300, ypixels = 300;
 		int xViewMin = 0;
-		int xViewMax = 5;
-		int yViewMin = -5;
-		int yViewMax = 10;
-		double lightX = 2.5;
-		double lightY = 60;
-		double lightZ = 4;
-		double observerX = 2.5;
-		double observerY = 1;
-		double observerZ = -1;
+		int xViewMax = 30;
+		int yViewMin = 0;
+		int yViewMax = 30;
+		double lightX = 1000;
+		double lightY = 1000;
+		double lightZ = 500;
+		double observerX = 15;
+		double observerY = 15;
+		double observerZ = 2;
 		
-		double lightIntensity = 0.5;
+		double lightIntensity = 1;
 		
 		int r = 255;
 		int g = 0;
-		int b = 150;
+		int b = 0;
 		
 		int backgroundR = 0;
 		int backgroundG = 0;
-		int backgroundB = 150;
+		int backgroundB = 255;
 		
 		Sphere s = new Sphere(new Point(sphereX, sphereY, sphereZ), sphereRadius);
 		Window w = new Window(xViewMin, xViewMax, yViewMin, yViewMax, xpixels, ypixels);
@@ -62,7 +62,6 @@ public class MainSphere {
 		double[][] pixels = new double[xpixels][ypixels];
 		
 		System.out.printf("Generating sphere:\n\tSphere: %s\n\tObserver: %s\n\tLight: %s\n\tWindow: %s\n",s,observer,light,w);
-		
 		
 		System.out.print("Calculating points... ");
 		

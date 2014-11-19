@@ -35,7 +35,8 @@ public class Sphere {
 		Vector dv2 = v.unitVector().mult(d2);
 		
 		double xf,yf,zf;
-		if(dv1.magnitude() < dv2.magnitude()){
+		//this becomes weird when you move the light
+		if(dv1.magnitude() > dv2.magnitude()){
 			xf = dv1.x;
 			yf = dv1.y;
 			zf = dv1.z;
@@ -56,7 +57,7 @@ public class Sphere {
 	}
 	
 	public boolean isOnSphere(Point p){
-		return feq(p.distance(center), radius, 0.01);
+		return feq(p.distance(center), radius, 0.0000001);
 	}
 	
 	public Vector unitNormalVector(Point p){
