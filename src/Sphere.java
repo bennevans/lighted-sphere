@@ -36,7 +36,7 @@ public class Sphere {
 		
 		double xf,yf,zf;
 		//this becomes weird when you move the light
-		if(dv1.magnitude() > dv2.magnitude()){
+		if(dv1.magnitude() < dv2.magnitude()){
 			xf = dv1.x;
 			yf = dv1.y;
 			zf = dv1.z;

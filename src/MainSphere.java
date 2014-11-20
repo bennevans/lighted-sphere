@@ -26,9 +26,9 @@ public class MainSphere {
 		String filename = "image.txt";
 		double sphereX = 15;
 		double sphereY = 15;
-		double sphereZ = 5000;
+		double sphereZ = -5000;
 		double sphereRadius = 4900;
-		int xpixels = 300, ypixels = 300;
+		int xpixels = 1000, ypixels = 1000;
 		int xViewMin = 0;
 		int xViewMax = 30;
 		int yViewMin = 0;

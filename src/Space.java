@@ -22,10 +22,12 @@ public class Space {
 		if(!collidesWithSphere(xPixel, yPixel))
 			return -1.0;
 		
-		
 		Vector towardsSphere = new Vector(observer, window.getPointFromPixel(xPixel, yPixel));
 		Point collisionPoint = sphere.intersection(towardsSphere);
-		return sphere.unitNormalVector(collisionPoint).cosAngle(new Vector(light, collisionPoint));
+		
+		double intensity = Math.abs(sphere.unitNormalVector(collisionPoint).cosAngle(new Vector(light, collisionPoint)));
+		
+		return intensity;
 	}
 		
 }
