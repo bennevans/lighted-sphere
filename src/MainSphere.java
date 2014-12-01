@@ -12,7 +12,7 @@ import java.io.PrintStream;
  * window size, light source location, and sphere center and radius.
  * 
  * Outputs a file plottable with the following gnuplot command:
- * plot "sphere.plot" with rgbimage
+ * plot "image.txt" with rgbimage
  *
  *
  */
