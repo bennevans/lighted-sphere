@@ -1,8 +1,15 @@
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  * 
@@ -75,6 +82,8 @@ public class MainSphere {
 		
 		long startTime = System.currentTimeMillis();
 		
+		BufferedImage bufferedImage = new BufferedImage(xpixels, ypixels, BufferedImage.TYPE_INT_RGB);
+		
 		for(int i = 0; i < ypixels; i++){
 			for(int j = 0; j < xpixels; j++){
 				
@@ -87,12 +96,19 @@ public class MainSphere {
 					gl = backgroundG;
 					bl = backgroundB;
 				}
-				//fw.write(String.format("%d %d %d %d %d\n", j,i, rl, gl, bl));
 				fw.write(j+" "+i+" "+rl+" "+gl+" "+bl+"\n");
+				bufferedImage.setRGB(i, j, new Color(rl,gl,bl).getRGB());
 			}
 		}
 		fw.close();
 		System.out.println(" done in " + (System.currentTimeMillis()-startTime)/1000. + " seconds!");
+		JFrame j =  new JFrame();
+		j.getContentPane().setLayout(new FlowLayout());
+		j.getContentPane().add(new JLabel(new ImageIcon(bufferedImage)));
+		j.pack();
+		j.setVisible(true);
+		j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 	}
 	
 }
